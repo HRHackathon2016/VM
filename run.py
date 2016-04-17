@@ -17,7 +17,7 @@ class MyHandler(BaseHTTPRequestHandler):
         if self.path.startswith("/feed?"):
             query = parse_qs(urlparse(self.path).query)
             data = map(int, query['data'][0].split(','))
-            target = int(query['target'][0])
+            target = query['target'][0]
             total_data.append(data)
             total_target.append(target)
             result = {'success': True}
