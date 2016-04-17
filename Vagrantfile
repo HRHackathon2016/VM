@@ -42,7 +42,7 @@ Vagrant.configure(2) do |config|
     apt-get install -y php5-cli php5-xdebug php5-fpm php5-mongo
     sed -i 's/sendfile on/sendfile off/g' /etc/nginx/nginx.conf
     sed -i 's/;date.timezone =/date.timezone = Europe\\/Berlin/g' /etc/php5/{fpm,cli}/php.ini 
-    echo -e "zend_extension=xdebug.so\nxdebug.remote_enable=on\nxdebug.remote_host=127.0.0.1\nxdebug.remote_port=9000\n"|sudo tee /etc/php5/mods-available/xdebug.ini > /dev/null
+    echo -e "zend_extension=xdebug.so\nxdebug.remote_enable=on\nxdebug.remote_host=127.0.0.1\nxdebug.remote_port=9000\nxdebug.remote_connect_back=on\n"|sudo tee /etc/php5/mods-available/xdebug.ini > /dev/null
     cp /vagrant/provisioning/position_matcher.nginx /etc/nginx/sites-available/position_matcher
     ln -fs /etc/nginx/sites-available/position_matcher /etc/nginx/sites-enabled/position_matcher
     nginx -s reload
