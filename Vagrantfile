@@ -46,6 +46,10 @@ Vagrant.configure(2) do |config|
     cp /vagrant/provisioning/position_matcher.nginx /etc/nginx/sites-available/position_matcher
     ln -fs /etc/nginx/sites-available/position_matcher /etc/nginx/sites-enabled/position_matcher
     nginx -s reload
+
   SHELL
+
+    config.vm.provision "shell", inline: "python /vagrant/run.py&",
+      run: "always"
 end
 
