@@ -37,6 +37,8 @@ Vagrant.configure(2) do |config|
     apt-get update
     apt-get install -y nginx mongodb
 
+    apt-get install -y python-dev python-pip python-numpy python-sklearn
+
     apt-get install -y php5-cli php5-xdebug php5-fpm php5-mongo
     sed -i 's/sendfile on/sendfile off/g' /etc/nginx/nginx.conf
     sed -i 's/;date.timezone =/date.timezone = Europe\\/Berlin/g' /etc/php5/{fpm,cli}/php.ini 
